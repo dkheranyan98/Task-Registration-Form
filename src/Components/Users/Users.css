@@ -15,10 +15,15 @@
 }
 
 .customBody td {
+    padding: 15px;
     background-color: #ffffffaf;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: gray;
     font-size: 15px;
     font-weight: 400;
     text-align: center;
+}
+
+.customTr {
+    border-bottom: 1pt solid #c2baba9a;
 }

@@ -19,7 +19,7 @@ const SignUp = () => {
   } = useSignUpForm();
 
   return (
-      <form>
+      <form onSubmit={handleSubmit}>
           <div className="Container">
               <h1 className="customH"> Form </h1>
               <p className="customP"> Registration Form </p>
@@ -106,7 +106,7 @@ const SignUp = () => {
                 </p>
             </div>
           <div>
-            <button type="submit" onClick={handleSubmit} className="customButton">Submit</button>
+            <button type="submit"  className="customButton">Submit</button>
           </div>
           </div>
           <h1 className="customH1"> Table </h1>

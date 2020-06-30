@@ -2,13 +2,41 @@ import  { useState } from 'react';
 
 const useSignUpForm = (callback) => {
   const [inputs, setInputs] = useState({});
-  const [users, setUsers] = useState([]);
+  const initialValue = [
+    {
+firstName: "Diana",
+lastName:"Kheranyan",
+email:"dianakheranyan@gmail.com",
+phoneNumber :"+67955665544",
+age:27,
+Gender:"Female"
+
+    },
+    {
+      firstName: "Aiana",
+lastName:"Kheranyan",
+email:"dianakheranyan@gmail.com",
+phoneNumber :"+67955665544",
+age:27,
+Gender:"Female"
+
+    }
+  ].sort(
+    (a,b)=>{
+      return (a.firstName.toUpperCase() < b.firstName.toUpperCase()) ? -1 : (a.firstName.toUpperCase() > b.firstName.toUpperCase()) ? 1 : 0;
+    }
+  )
+  const [users, setUsers] = useState(initialValue);
   const handleSubmit = (event) => {
     event.preventDefault();
-    setInputs(inputs => ({ ...inputs, newInput: true }));
+    setInputs((inputs) => ({ ...inputs }));
     let usersData = {...inputs}
-    setUsers(users.concat(usersData))
-    setInputs(() => ({ }));
+    setUsers((users.concat(usersData).sort((a,b)=>{
+      return (a.firstName.toUpperCase() < b.firstName.toUpperCase()) ? -1 : (a.firstName.toUpperCase() > b.firstName.toUpperCase()) ? 1 : 0;
+    })
+    ))
+    setInputs(() => ([]));
+    event.target.reset();
   };
 
   const handleInputChange = (event) => {
@@ -19,7 +47,7 @@ const useSignUpForm = (callback) => {
     }
   };
 
-  const handlePhoneInputChange = (value) => {
+  const handlePhoneInputChange = (value,event) => {
     if (value) {
       setInputs(inputs => ({ ...inputs, phoneNumber: value }));
     }

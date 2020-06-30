@@ -3,6 +3,7 @@ import './Users.css';
 
 const Users = ({ users }) => {
     console.log(users)
+    let i = 0;
   return (
     <table className="customTable">
       <thead className="customThead">
@@ -17,7 +18,6 @@ const Users = ({ users }) => {
       </thead>
       <tbody className="customBody">
       {users.map(({
-        index,
         firstName,
         lastName,
         email,
@@ -26,8 +26,8 @@ const Users = ({ users }) => {
         Gender,
 
       }) => (
-        <tr id={index}>
-          <td>{index}</td>
+        <tr id={i++} className="customTr">
+          <td>{i}</td>
       <td><th>{firstName}</th> <th>{lastName}</th></td> 
           <td>{email}</td>
           <td>{phoneNumber}</td>
